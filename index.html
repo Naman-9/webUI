@@ -16,17 +16,25 @@
   <body>
     <header class="primary-header">
       <div class="container">
-        <a href="#"><img src="images/logo.svg" alt="Manage" /></a>
-        <nav class="primary-naivgation">
-          <ul aria-label="" role="list" class="nav-list">
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Product</a></li>
-            <li><a href="#">About US</a></li>
-            <li><a href="#">Carreers</a></li>
-            <li><a href="#">Community</a></li>
-          </ul>
-        </nav>
-        <button class="button">Get Started</button>
+        <div class="nav-wrapper">
+          <a href="#"><img src="images/logo.svg" alt="Manage" /></a>
+          <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+            <span class="visually-hidden">Menu</span>
+            <img class="icon-hamburger" src="images/icon-hamburger.svg" alt="" aria-hidden="true" />
+            <img class="icon-close" src="images/icon-close.svg" alt="" aria-hidden="true" />
+          </button>
+          <span class="visually-hidden">Menu</span>
+          <nav class="primary-naivgation" id="primary-navigation">
+            <ul aria-label="" role="list" class="nav-list">
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Product</a></li>
+              <li><a href="#">About US</a></li>
+              <li><a href="#">Carreers</a></li>
+              <li><a href="#">Community</a></li>
+            </ul>
+          </nav>
+          <button class="button | display-sm-none display-md-inline-flex" >Get Started</button>
+        </div>
       </div>
     </header>
 
@@ -113,7 +121,7 @@
       <div class="container">
         <div class="even-columns">
           <div>
-        <a href="#"><img src="images/logo.svg" alt="Manage" /></a>
+            <a href="#"><img src="images/logo.svg" alt="Manage" /></a>
             <ul role="list" aria-label="social links">
               <li><a aria-label="facebook" href="#"></a></li>
               <li><a aria-label="youtube" href="#"></a></li>
@@ -121,7 +129,7 @@
               <li><a aria-label="pinterest" href="#"></a></li>
               <li><a aria-label="instagram" href="#"></a></li>
             </ul>
-          </div> 
+          </div>
           <div>
             <nav class="footer-nav">
               <ul aria-label="footer" role="list">
@@ -137,15 +145,30 @@
           </div>
           <div>
             <form action="">
-              <input type="email">
+              <input type="email" />
               <button class="button">Go</button>
               <p>Copyright 2024. All rights Reserved.</p>
             </form>
           </div>
         </div>
       </div>
-
     </footer>
-    
+
+    <script>
+
+      const primaryHeader = document.querySelector('.primary-header');
+      const navToggle = document.querySelector('.mobile-nav-toggle');
+      const primaryNav = document.querySelector('.primary-naivgation');
+
+      navToggle?.addEventListener('click', () => {
+        primaryNav.hasAttribute('data-visible')
+          ? navToggle.setAttribute('aria-expanded', false)
+          : navToggle.setAttribute('aria-expanded', true);
+
+        primaryNav?.toggleAttribute('data-visible');
+        primaryHeader?.toggleAttribute('data-overlay');
+      });
+
+    </script>
   </body>
 </html>
